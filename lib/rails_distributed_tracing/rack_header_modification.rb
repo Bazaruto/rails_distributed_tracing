@@ -6,14 +6,7 @@ class RackHeaderModification
   end
 
   def call(env)
-
-    @status, @headers, @response = @app.call(env)
-    Rails.logger.info('********************************************************')
-
-    # @response.headers[DistributedTracing::TRACE_ID] = DistributedTracing.trace_id
-
-    Rails.logger.info(@headers.merge(asdf: 1))
-
-    [@status, @headers, @response]
+    env[:request_headers].merge!({DistributedTracing::TRACE_ID => DistributedTracing.trace_id})
+    @app.call(env)
   end
 end
