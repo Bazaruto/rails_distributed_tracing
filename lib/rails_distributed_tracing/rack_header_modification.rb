@@ -10,7 +10,7 @@ class RackHeaderModification
     @status, @headers, @response = @app.call(env)
     Rails.logger.info('********************************************************')
 
-    @headers[DistributedTracing::TRACE_ID] = DistributedTracing.trace_id
+    @response.headers[DistributedTracing::TRACE_ID] = DistributedTracing.trace_id
 
     Rails.logger.info(@headers)
 
