@@ -8,11 +8,11 @@ class RackHeaderModification
   def call(env)
 
     @status, @headers, @response = @app.call(env)
-    Rails.logger('********************************************************')
+    Rails.logger.info('********************************************************')
 
     @headers[DistributedTracing::TRACE_ID] = DistributedTracing.trace_id
 
-    Rails.logger(@headers)
+    Rails.logger.info(@headers)
 
     [@status, @headers, @response]
   end
