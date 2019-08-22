@@ -12,7 +12,7 @@ class RackHeaderModification
 
     # @response.headers[DistributedTracing::TRACE_ID] = DistributedTracing.trace_id
 
-    Rails.logger.info(@headers)
+    Rails.logger.info(@headers.merge(asdf: 1))
 
     [@status, @headers, @response]
   end
