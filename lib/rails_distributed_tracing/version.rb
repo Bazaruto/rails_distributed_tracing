@@ -1,3 +1,3 @@
 module DistributedTracing
-  VERSION = '1.3.13'
+  VERSION = '1.4'
 end
