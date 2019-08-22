@@ -1,6 +1,6 @@
 require 'rails_distributed_tracing/distributed_tracing'
 
-class DeltaLogger
+class RackHeaderModification
   def initialize(app)
     @app = app
   end
