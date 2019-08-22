@@ -7,7 +7,9 @@ class RackHeaderModification
 
   def call(env)
     @status, @headers, @response = @app.call(env)
-    Rails.logger.info("----------#{env}-------------------")
+    env.each do |k, v|
+      Rails.logger.info("----------#{{k => v}}-------------------")
+    end
     @headers.merge!({DistributedTracing::TRACE_ID => DistributedTracing.trace_id})
     [@status, @headers, @response]
   end
